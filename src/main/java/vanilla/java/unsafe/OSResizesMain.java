@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.nio.file.Files;
 import java.util.Arrays;
 
 /**
@@ -36,7 +37,7 @@ import java.util.Arrays;
  */
 public class OSResizesMain {
     public static void main(String[] args) throws IOException, InterruptedException {
-        File file = File.createTempFile("over-sized", "deleteme");
+        File file = Files.createTempFile("over-sized", "deleteme").toFile();
         ChronicleMap<String, String> map = ChronicleMapBuilder.of(String.class, String.class)
                 .averageValueSize(50 * 1024 * 1024)
                 .entries(1000 * 1000)
